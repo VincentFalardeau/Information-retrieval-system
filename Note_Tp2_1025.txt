@@ -1,0 +1,19 @@
+IFT 1025 - 
+
+0- Compter le nbr de document avec notre file chooser / nombre d'éléments sélectionner dans notre JList
+
+1- Chaque élément de notre arraylist d'index de documents sera un objet qui contient les attributs (String (mot en tant que tel) et fréquence).
+
+2- Sort la structure d'index de documents avant de créer la structure d'index inversé pour pouvoir utiliser la recherche binaire.
+
+Premiere interface :
+1- L'admin peut choisir les documents à "parse" (création de la structure d'index de documents)
+2- L'admin peut afficher l'index de documents
+3- Boutton passer à l'interface de recherche (création de la stucture d'index inversé)
+
+Si on ferme, ça quitte le programme
+
+Deuxième interface : 
+1- Permet la recherche de mot (Pas case sensitive)
+
+Si on la ferme, on revient à la premiere interface
