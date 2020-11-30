@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -11,7 +12,12 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileSystemView;
 
+import structures.DocumentIndexor;
+import structures.WordIndexor;
+
 public class IndexationPage extends JFrame{
+	
+	DocumentIndexor documentIndexor;
 	
 	public IndexationPage() {
 		
@@ -31,16 +37,26 @@ public class IndexationPage extends JFrame{
 		
 		//Button to open the file chooser
 		JButton fileButton = new JButton("Open file(s)");
-		content.add(fileButton, BorderLayout.NORTH);
+		documentIndexor = null;
 		fileButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
+				//Open the file chooser
+				int result = fileChooser.showOpenDialog(null);
+				if(result == JFileChooser.APPROVE_OPTION) {
+					File[] files = fileChooser.getSelectedFiles();
+					
+					//Index the choosen files
+					documentIndexor = new DocumentIndexor(files);
+				}
+				
 				
 			}
 			
 		});
+		content.add(fileButton, BorderLayout.NORTH);
 		
 		//Document index
 		JList documentIndex = new JList();
@@ -48,7 +64,25 @@ public class IndexationPage extends JFrame{
 		
 		//Research page button
 		JButton pageButton = new JButton("Go to research page");
+//		pageButton.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				
+//				if(documentIndexor != null) {
+//					WordIndexor wordIndexor = new WordIndexor(documentIndexor);
+//				}
+//				else {
+//					//TODO
+//				}
+//				
+//				
+//			}
+//			
+//		});
 		content.add(pageButton, BorderLayout.SOUTH);
+		
+		
 
 		this.setVisible(true);
 	}
