@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 //ArrayList of words found in a document
 public class DocumentIndex extends ArrayList<Word>{
@@ -38,7 +37,7 @@ public class DocumentIndex extends ArrayList<Word>{
 	/**
 	 * @param from: The beginning of the partition
 	 * @param to: The end of the partition
-	 * @return The sorted position of pivot
+	 * @return Position of a sorted element
 	 */
 	private int partition(int from, int to) {
 		
@@ -62,8 +61,7 @@ public class DocumentIndex extends ArrayList<Word>{
 			}
 			
 			//If the two elements are not sorted, exchange them.
-			//Sorted means the smallest should be to the left of the pivot
-			//and the greatest to the right.
+			//Sorted means the smallest should be to the left of the greatest.
 			if(i < j) {
 				Word temp = get(i);
 				set(i, get(j));
@@ -71,7 +69,7 @@ public class DocumentIndex extends ArrayList<Word>{
 			}
 		}
 		
-		//Return the position of the pivot
+		//Return the position of one of the sorted element
 		return j;
 		
 	}
@@ -121,14 +119,17 @@ public class DocumentIndex extends ArrayList<Word>{
 		
 		//Add the word in the list or increment frequence if not new
 		for(String w: words) {
-			Word word = new Word(w);
-			int i = this.indexOf(word);		
-			if(i < 0) {
-				this.add(word);
+			if(w.length() > 0) {
+				Word word = new Word(w);
+				int i = this.indexOf(word);		
+				if(i < 0) {
+					this.add(word);
+				}
+				else {
+					this.get(i).incrementFrequence();
+				}
 			}
-			else {
-				this.get(i).incrementFrequence();
-			}
+			
 		}		
 	}
 
