@@ -1,6 +1,6 @@
 package structures;
 
-public class Word {
+public class Word implements Comparable{
 	
 	private String name;
 	private int frequence;
@@ -23,7 +23,13 @@ public class Word {
 	
 	@Override
 	public String toString() {
-		return getName() + "(" + getFrequence() + ")";
+		return "(" + getFrequence() + ") " + getName();
+	}
+	
+	@Override
+	public int compareTo(Object o) {		
+		return getName().toLowerCase().compareTo(((Word)o).getName().toLowerCase());
+		
 	}
 	
 	public void incrementFrequence(){

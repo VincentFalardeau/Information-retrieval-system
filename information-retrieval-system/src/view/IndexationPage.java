@@ -11,6 +11,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.filechooser.FileSystemView;
 
 import structures.DocumentIndex;
@@ -20,7 +22,7 @@ import structures.WordIndexor;
 public class IndexationPage extends JFrame{
 	
 	DocumentIndexor documentIndexor;
-	JList documentIndexList;
+	JTextArea documentIndexes;
 	
 	public IndexationPage() {
 		
@@ -38,9 +40,12 @@ public class IndexationPage extends JFrame{
 		fileChooser.setMultiSelectionEnabled(true);
 		fileChooser.setDialogTitle("Please choose one or many files");
 		
-		//Document index list
-		documentIndexList = new JList();
-		content.add(documentIndexList, BorderLayout.CENTER);
+		//Document indexes display
+		documentIndexes = new JTextArea();
+		JScrollPane scrollPane = new JScrollPane(documentIndexes); 
+		documentIndexes.setEditable(false);
+		content.add(scrollPane, BorderLayout.CENTER);
+		
 		
 		//Button to open the file chooser
 		JButton fileButton = new JButton("Open file(s)");
@@ -58,7 +63,7 @@ public class IndexationPage extends JFrame{
 					//Index the choosen files
 					documentIndexor = new DocumentIndexor(files);
 					
-					updateList();
+					documentIndexes.setText(documentIndexor.toString());
 				}
 				
 				
@@ -90,22 +95,5 @@ public class IndexationPage extends JFrame{
 		
 
 		this.setVisible(true);
-	}
-	
-	//Responsible for updating document index list with the documentIndexor
-	public void updateList() {
-		
-		DefaultListModel dlm = new DefaultListModel();
-		
-		if(documentIndexor != null) {
-			int i = 0;
-			for(DocumentIndex documentIndex : documentIndexor.getDocumentIndexes()) {
-				dlm.add(i,documentIndex);
-				i++;
-			}
-			documentIndexList.setModel(dlm);
-		}
-
-		
 	}
 }

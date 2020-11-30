@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 //ArrayList of words found in a document
 public class DocumentIndex extends ArrayList<Word>{
@@ -17,6 +18,65 @@ public class DocumentIndex extends ArrayList<Word>{
 		tokenize(file);
 	}
 	
+	//Our own sort method
+	public void sort() {
+		//Quicksort
+		sort(0, this.size() - 1);
+	}
+	
+	private void sort(int beginning, int end) {
+		//If t still has to be sorted
+		if(beginning < end) {
+			
+			int pivot = partition(beginning, end);
+			
+			sort(beginning, pivot - 1);
+			sort(pivot + 1, end);
+		}	
+	}
+
+	/**
+	 * @param beginning: The beginning of the partition
+	 * @param end: The end of the partition
+	 * @return The sorted position of pivot
+	 */
+	private int partition(int beginning, int end) {
+		
+		Word pivot = get(beginning);
+		
+		int i = beginning;
+		int j = end;
+		
+		//While i is smaller than j
+		while(i < j) {
+
+			//Increment i until you find an element greater than pivot (or i becomes greater or equal to j)
+			while(i < j && get(i).compareTo(pivot) <= 0) {//While get(i) is smaller than pivot (or equal to it
+				i++;
+			}
+			
+			//Decrement j until you find an element smaller than pivot
+			while(get(j).compareTo(pivot) > 0) {
+				j--;
+			}
+			
+			if(i < j) {
+				Word temp = get(i);
+				set(i, get(j));
+				set(j, temp);
+			}
+			
+		}
+		
+		//j becomes the position of pivot, so interchange j and pivot
+		set(beginning, get(j));
+		set(j, pivot);
+		
+		//Return the position of the pivot
+		return j;
+		
+	}
+
 	//Tokenizes the file
 	private void tokenize(File file) {
 
@@ -31,8 +91,10 @@ public class DocumentIndex extends ArrayList<Word>{
 			while(line != null) {
 				tokenize(line);
 				line = input.readLine();
-				
 			}
+			
+			//Sort the list
+			this.sort();
 			
 		} catch (FileNotFoundException e) {
 			System.out.println("Cannot open file " + file.getName());
@@ -70,13 +132,14 @@ public class DocumentIndex extends ArrayList<Word>{
 			}
 		}		
 	}
-	
+
 	@Override
 	public String toString() {
-		String str = getDocument().getName() + ": ";
+		String str = getDocument().getName() + ": \n";
 		for(Word w: this) {
+			str += "\t";
 			str += w;
-			str += ", ";
+			str += "\n";
 		}
 		return str;
 	}

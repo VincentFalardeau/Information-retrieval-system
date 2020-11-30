@@ -9,14 +9,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		new IndexationPage();
+		//new IndexationPage();
 		
 		
 		//DocumentIndexor testing
-//		File f1 = new File("resources/f1.txt");
-//		File[] files = {f1};
-//		DocumentIndexor documentIndexor = new DocumentIndexor(files);
-//		System.out.println(documentIndexor);
+		File f1 = new File("resources/f2.txt");
+		File[] files = {f1};
+		DocumentIndexor documentIndexor = new DocumentIndexor(files);
+		System.out.println(documentIndexor);
 		
 //		Word w1 = new Word("allo");
 //		ArrayList<Word> a = new ArrayList<Word>();
