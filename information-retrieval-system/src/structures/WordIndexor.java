@@ -21,16 +21,6 @@ public class WordIndexor {
 
 	private void index() {
 		
-		//TODO: find every single unique word and count their occurrences in every document
-		//Create a WordIndex for every word.
-		//WordIndex contains an array of int.
-			//The ith element of the array of int is the ith element of documentIndexor (ith document)
-			//It is filled with zero automatically
-			//increment documents[i] whenever you find an occurence of the word in the ith document
-		
-		//Equivalent to this
-		//ArrayList<WordIndex> uniqueWords = new ArrayList<WordIndex>();
-		
 		//For every document
 		for(int i = 0; i < documentCount; i++) {
 			
