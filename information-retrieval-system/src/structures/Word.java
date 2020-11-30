@@ -31,14 +31,6 @@ public class Word implements Comparable{
 		return getName().compareToIgnoreCase(((Word)o).getName());
 	}
 	
-	public boolean smallerThan(Word w) {
-		return this.compareTo(w) < 0;
-	}
-	
-	public boolean greaterThan(Word w) {
-		return this.compareTo(w) > 0;
-	}
-	
 	public void incrementFrequence(){
 		setFrequence(getFrequence() + 1);
 	}

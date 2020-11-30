@@ -33,6 +33,12 @@ public class DocumentIndexor{
 	public DocumentIndex get(int i) {
 		return documentIndexes[i];
 	}
+
+	//Gives the ith document
+	public Document getDocument(int i) {
+		return documentIndexes[i].getDocument();
+	}
+	
 	
 	@Override
 	public String toString() {

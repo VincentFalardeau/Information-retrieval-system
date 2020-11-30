@@ -2,15 +2,20 @@ package structures;
 
 import java.util.ArrayList;
 
-//ArrayList of words and the number of time they are found among documents
-public class WordIndexor extends ArrayList<WordIndex>{
+import tools.QuickSort;
+
+
+public class WordIndexor {
 	
+	//ArrayList of words and the number of time they are found among documents
+	public ArrayList<Comparable> wordIndexes;
 	public static int documentCount;
-	public static DocumentIndexor documentIndexor;
+	public DocumentIndexor documentIndexor;
 	
 	public WordIndexor(DocumentIndexor documentIndexor) {
 		this.documentIndexor = documentIndexor;
 		documentCount = documentIndexor.length();
+		wordIndexes = new ArrayList<Comparable>();
 		index();
 	}
 
@@ -23,7 +28,8 @@ public class WordIndexor extends ArrayList<WordIndex>{
 			//It is filled with zero automatically
 			//increment documents[i] whenever you find an occurence of the word in the ith document
 		
-		ArrayList<WordIndex> uniqueWords = new ArrayList<WordIndex>();
+		//Equivalent to this
+		//ArrayList<WordIndex> uniqueWords = new ArrayList<WordIndex>();
 		
 		//For every document
 		for(int i = 0; i < documentCount; i++) {
@@ -31,31 +37,57 @@ public class WordIndexor extends ArrayList<WordIndex>{
 			DocumentIndex doc = documentIndexor.get(i);
 			
 			//For every word in that document
-			for(int j = 0; j < doc.size(); j++) {
+			for(int j = 0; j < doc.length(); j++) {
 				
-				Word word = doc.get(j);
+				Word word = (Word)doc.get(j);
 				
-				int k = uniqueWords.indexOf(word);
+				int k = wordIndexes.indexOf(new WordIndex(word));
 				
 				//First time this word is found, make new wordIndex
 				if(k < 0) {
 					WordIndex wordIndex = new WordIndex(word);
 					wordIndex.incrementFrequence(i);//Found in the ith document
-					uniqueWords.add(wordIndex);
+					wordIndexes.add(wordIndex);
 				}
 				//Not the first time the word is found
 				else {
-					WordIndex wordIndex = uniqueWords.get(k);
-					wordIndex.incrementFrequence(i);//Seen in the ith document
+					((WordIndex) wordIndexes.get(k)).incrementFrequence(i);//Seen in the ith document
 				}
 			}
 		}
 		
+		sort();
+		
 		
 	}
 	
+	public void sort() {
+		QuickSort.sort(wordIndexes);
+		
+	}
+
 	@Override
 	public String toString() {
+		String str = "";
+		for(int i = 0; i < wordIndexes.size(); i++) {
+			str += toString(i);
+			str += "\n";
+		}
+		return str;
+	}
+	
+	//Gives a String representation of the ith WordIndex
+	private String toString(int i) {
+		WordIndex wordIndex = (WordIndex) wordIndexes.get(i);
+		Word word = wordIndex.getWord();
+		String str = word.getName() + ": \n\t";
+		
+		for(int j = 0; j < documentCount; j++) {
+			str += "(" + wordIndex.getFrequence(j) + ")" + documentIndexor.getDocument(j).getName();
+			str += " ";
+		}
+		
+		return str;
 		
 	}
 }

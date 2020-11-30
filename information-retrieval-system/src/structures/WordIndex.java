@@ -1,10 +1,10 @@
 package structures;
 
-public class WordIndex {
+public class WordIndex implements Comparable{
 	
 	//The documents array, 0 at index i means no occurence of the current word in the ith document of documentIndexor
 	//1 means there is an occurence of the current word in the ith document of documentIndexor
-	public static int[] documents;
+	public int[] documents;
 	private Word word;
 	
 	public WordIndex(Word word) {
@@ -30,12 +30,18 @@ public class WordIndex {
 		documents[i]++;
 	}
 	
+	public Word getWord() {
+		return word;
+	}
+	
 	@Override
-	public String toString() {
-		String str = word.getName() + ": \n";
-		for(int i = 0; i < documents.length; i++) {
-			str += 
-		}
+	public boolean equals(Object o) {
+		return ((WordIndex)o).getWord().equals(getWord());
+		
 	}
 
+	@Override
+	public int compareTo(Object o) {
+		return getWord().compareTo(((WordIndex)o).getWord());
+	}
 }

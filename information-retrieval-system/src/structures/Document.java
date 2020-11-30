@@ -8,7 +8,7 @@ public class Document {
 	private int frequence;
 	
 	public Document(String name) {
-		setFrequence(1);
+		setFrequence(0);
 		setName(name);
 	}
 	
@@ -18,7 +18,7 @@ public class Document {
 	}
 	
 	public Document(File file) {
-		setFrequence(1);
+		setFrequence(0);
 		setName(file.getName());
 	}
 	
