@@ -24,53 +24,52 @@ public class DocumentIndex extends ArrayList<Word>{
 		sort(0, this.size() - 1);
 	}
 	
-	private void sort(int beginning, int end) {
+	private void sort(int from, int to) {
 		//If t still has to be sorted
-		if(beginning < end) {
+		if(from < to) {
 			
-			int pivot = partition(beginning, end);
+			int pivot = partition(from, to);
 			
-			sort(beginning, pivot - 1);
-			sort(pivot + 1, end);
+			sort(from, pivot);
+			sort(pivot + 1, to);
 		}	
 	}
 
 	/**
-	 * @param beginning: The beginning of the partition
-	 * @param end: The end of the partition
+	 * @param from: The beginning of the partition
+	 * @param to: The end of the partition
 	 * @return The sorted position of pivot
 	 */
-	private int partition(int beginning, int end) {
+	private int partition(int from, int to) {
 		
-		Word pivot = get(beginning);
+		Word pivot = get(from);
 		
-		int i = beginning;
-		int j = end;
+		int i = from - 1;
+		int j = to + 1;
 		
-		//While i is smaller than j
 		while(i < j) {
-
-			//Increment i until you find an element greater than pivot (or i becomes greater or equal to j)
-			while(i < j && get(i).compareTo(pivot) <= 0) {//While get(i) is smaller than pivot (or equal to it
+			
+			//Increment i until you find an element greater than pivot
+			i++;
+			while(get(i).smallerThan(pivot)) {
 				i++;
 			}
 			
 			//Decrement j until you find an element smaller than pivot
-			while(get(j).compareTo(pivot) > 0) {
+			j--;
+			while(get(j).greaterThan(pivot)) {
 				j--;
 			}
 			
+			//If the two elements are not sorted, exchange them.
+			//Sorted means the smallest should be to the left of the pivot
+			//and the greatest to the right.
 			if(i < j) {
 				Word temp = get(i);
 				set(i, get(j));
 				set(j, temp);
 			}
-			
 		}
-		
-		//j becomes the position of pivot, so interchange j and pivot
-		set(beginning, get(j));
-		set(j, pivot);
 		
 		//Return the position of the pivot
 		return j;

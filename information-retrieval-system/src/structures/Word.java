@@ -18,7 +18,7 @@ public class Word implements Comparable{
 	//The criteria for 2 words to be equivalent
 	@Override
 	public boolean equals(Object o) {
-		return getName().toLowerCase().equals(((Word)o).getName().toLowerCase());
+		return getName().equalsIgnoreCase(((Word)o).getName());
 	}
 	
 	@Override
@@ -28,8 +28,15 @@ public class Word implements Comparable{
 	
 	@Override
 	public int compareTo(Object o) {		
-		return getName().toLowerCase().compareTo(((Word)o).getName().toLowerCase());
-		
+		return getName().compareToIgnoreCase(((Word)o).getName());
+	}
+	
+	public boolean smallerThan(Word w) {
+		return this.compareTo(w) < 0;
+	}
+	
+	public boolean greaterThan(Word w) {
+		return this.compareTo(w) > 0;
 	}
 	
 	public void incrementFrequence(){
