@@ -21,6 +21,11 @@ public class Document {
 		setFrequence(1);
 		setName(file.getName());
 	}
+	
+	@Override
+	public String toString() {
+		return "(" + getFrequence() + ") " + getName();
+	}
 
 	public void incrementFrequence(){
 		setFrequence(getFrequence() + 1);
