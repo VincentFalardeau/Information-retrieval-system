@@ -22,7 +22,6 @@ public class DocumentIndex {
 		tokenize(file);
 	}
 	
-	//Our own sort method
 	public void sort() {
 		QuickSort.sort(words);
 	}

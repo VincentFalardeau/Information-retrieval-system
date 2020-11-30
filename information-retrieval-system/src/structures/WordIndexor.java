@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import tools.QuickSort;
 
-
+//Structure #2
 public class WordIndexor {
 	
 	//ArrayList of words and the number of time they are found among documents
@@ -30,7 +30,6 @@ public class WordIndexor {
 			for(int j = 0; j < doc.length(); j++) {
 				
 				Word word = (Word)doc.get(j);
-				
 				int k = wordIndexes.indexOf(new WordIndex(word));
 				
 				//First time this word is found, make new wordIndex
@@ -41,7 +40,7 @@ public class WordIndexor {
 				}
 				//Not the first time the word is found
 				else {
-					((WordIndex) wordIndexes.get(k)).incrementFrequence(i);//Seen in the ith document
+					((WordIndex) wordIndexes.get(k)).incrementFrequence(i);//Seen in the ith document once more
 				}
 			}
 		}

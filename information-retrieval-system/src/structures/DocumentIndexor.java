@@ -3,9 +3,11 @@ package structures;
 import java.io.File;
 import java.util.ArrayList;
 
-//Contains an array of DocumentIndex built from an array of files
+//Structure #1
+
 public class DocumentIndexor{
 	
+	//Contains an array of DocumentIndex built from an array of files
 	private DocumentIndex[] documentIndexes;
 	
 	public DocumentIndexor(File[] files) {
@@ -13,6 +15,7 @@ public class DocumentIndexor{
 		index(files);
 	}
 
+	//Indexes the files
 	public void index(File[] files) {
 		
 		for(int i = 0; i < files.length; i++) {
