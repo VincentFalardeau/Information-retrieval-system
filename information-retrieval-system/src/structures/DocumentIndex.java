@@ -58,7 +58,7 @@ public class DocumentIndex extends ArrayList<Word>{
 		str = str.replaceAll("[^a-zA-z0-9]", " ");//[^a-zA-z0-9] Keep a-z, A-Z, 0-9
 		String[] words = str.split(" +");//" +" means a space and a character
 		
-		//Add the word in the list
+		//Add the word in the list or increment frequence if not new
 		for(String w: words) {
 			Word word = new Word(w);
 			int i = this.indexOf(word);		

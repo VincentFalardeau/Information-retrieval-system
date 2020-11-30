@@ -18,7 +18,7 @@ public class Word {
 	//The criteria for 2 words to be equivalent
 	@Override
 	public boolean equals(Object o) {
-		return getName().equals(((Word)o).getName());
+		return getName().toLowerCase().equals(((Word)o).getName().toLowerCase());
 	}
 	
 	@Override

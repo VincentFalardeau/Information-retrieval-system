@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -12,12 +13,14 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileSystemView;
 
+import structures.DocumentIndex;
 import structures.DocumentIndexor;
 import structures.WordIndexor;
 
 public class IndexationPage extends JFrame{
 	
 	DocumentIndexor documentIndexor;
+	JList documentIndexList;
 	
 	public IndexationPage() {
 		
@@ -35,6 +38,10 @@ public class IndexationPage extends JFrame{
 		fileChooser.setMultiSelectionEnabled(true);
 		fileChooser.setDialogTitle("Please choose one or many files");
 		
+		//Document index list
+		documentIndexList = new JList();
+		content.add(documentIndexList, BorderLayout.CENTER);
+		
 		//Button to open the file chooser
 		JButton fileButton = new JButton("Open file(s)");
 		documentIndexor = null;
@@ -50,6 +57,8 @@ public class IndexationPage extends JFrame{
 					
 					//Index the choosen files
 					documentIndexor = new DocumentIndexor(files);
+					
+					updateList();
 				}
 				
 				
@@ -57,10 +66,6 @@ public class IndexationPage extends JFrame{
 			
 		});
 		content.add(fileButton, BorderLayout.NORTH);
-		
-		//Document index
-		JList documentIndex = new JList();
-		content.add(documentIndex, BorderLayout.CENTER);
 		
 		//Research page button
 		JButton pageButton = new JButton("Go to research page");
@@ -85,5 +90,22 @@ public class IndexationPage extends JFrame{
 		
 
 		this.setVisible(true);
+	}
+	
+	//Responsible for updating document index list with the documentIndexor
+	public void updateList() {
+		
+		DefaultListModel dlm = new DefaultListModel();
+		
+		if(documentIndexor != null) {
+			int i = 0;
+			for(DocumentIndex documentIndex : documentIndexor.getDocumentIndexes()) {
+				dlm.add(i,documentIndex);
+				i++;
+			}
+			documentIndexList.setModel(dlm);
+		}
+
+		
 	}
 }

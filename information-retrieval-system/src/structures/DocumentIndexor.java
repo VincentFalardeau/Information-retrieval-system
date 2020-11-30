@@ -12,7 +12,7 @@ public class DocumentIndexor{
 		documentIndexes = new DocumentIndex[files.length];
 		index(files);
 	}
-	
+
 	public void index(File[] files) {
 		
 		for(int i = 0; i < files.length; i++) {
@@ -22,6 +22,10 @@ public class DocumentIndexor{
 	
 	public int length() {
 		return documentIndexes.length;
+	}
+	
+	public DocumentIndex[] getDocumentIndexes() {
+		return documentIndexes;
 	}
 	
 	@Override
