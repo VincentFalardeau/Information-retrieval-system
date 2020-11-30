@@ -74,22 +74,22 @@ public class IndexationPage extends JFrame{
 		
 		//Research page button
 		JButton pageButton = new JButton("Go to research page");
-//		pageButton.addActionListener(new ActionListener() {
-//
-//			@Override
-//			public void actionPerformed(ActionEvent arg0) {
-//				
-//				if(documentIndexor != null) {
-//					WordIndexor wordIndexor = new WordIndexor(documentIndexor);
-//				}
-//				else {
-//					//TODO
-//				}
-//				
-//				
-//			}
-//			
-//		});
+		pageButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if(documentIndexor != null) {
+					WordIndexor wordIndexor = new WordIndexor(documentIndexor);
+				}
+				else {
+					//TODO
+				}
+				
+				
+			}
+			
+		});
 		content.add(pageButton, BorderLayout.SOUTH);
 		
 		
