@@ -14,10 +14,10 @@ public class Main {
 		
 		
 		//Testing
-		File f1 = new File("resources/f1.txt");
-		File f2 = new File("resources/f2.txt");
-		File f3 = new File("resources/f3.txt");
-		File[] files = {f1, f2, f3};
+		//File f1 = new File("resources/f4.txt");
+		//File f2 = new File("resources/f2.txt");
+		//File f3 = new File("resources/f3.txt");
+		File[] files = {};
 		DocumentIndexor documentIndexor = new DocumentIndexor(files);
 		System.out.println(documentIndexor);
 		WordIndexor wordIndexor = new WordIndexor(documentIndexor);

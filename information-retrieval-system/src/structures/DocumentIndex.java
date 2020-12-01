@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import tools.QuickSort;
+import tools.Tokenizer;
 
 
 public class DocumentIndex {
@@ -38,7 +39,7 @@ public class DocumentIndex {
 			String line = "";
 			line = input.readLine();
 			while(line != null) {
-				tokenize(line);
+				Tokenizer.tokenize(line, words);
 				line = input.readLine();
 			}
 			
@@ -62,28 +63,7 @@ public class DocumentIndex {
 		}
 	}	
 	
-	//Tokenizes a string
-	private void tokenize(String str) {
-		//Detect words in the string
-		//TODO: Refine word detection
-		str = str.replaceAll("[^a-zA-z0-9]", " ");//[^a-zA-z0-9] Keep a-z, A-Z, 0-9
-		String[] wordsFound = str.split(" +");//" +" means a space and a character
-		
-		//Add the word in the list or increment frequence if not new
-		for(String w: wordsFound) {
-			if(w.length() > 0) {
-				Word word = new Word(w);
-				int i = words.indexOf(word);		
-				if(i < 0) {
-					words.add(word);
-				}
-				else {
-					((Word) words.get(i)).incrementFrequence();
-				}
-			}
-			
-		}		
-	}
+
 	
 	public int length() {
 		return words.size();
