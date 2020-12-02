@@ -10,9 +10,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//new IndexationPage();
+		new IndexationPage();
 		
-		
+		/*
 		//Testing
 		File f1 = new File("resources/f1.txt");
 		File f2 = new File("resources/f2.txt");
@@ -22,6 +22,7 @@ public class Main {
 		System.out.println(documentIndexor);
 		WordIndexor wordIndexor = new WordIndexor(documentIndexor);
 		System.out.println(wordIndexor);
+		*/
 		
 //		Word w1 = new Word("allo");
 //		ArrayList<Word> a = new ArrayList<Word>();

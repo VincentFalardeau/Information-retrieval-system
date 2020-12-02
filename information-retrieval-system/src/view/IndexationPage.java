@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -26,14 +27,19 @@ public class IndexationPage extends JFrame{
 	
 	public IndexationPage() {
 		
-		//Frame parameters
-		this.setSize(800, 400);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("Indexation page");
-
-		//Content panel
-		JPanel content = (JPanel)this.getContentPane();
+		//Creating our main frame
+		JFrame mainFrame = new JFrame("Indexation Page");
 		
+		//Creating the panels which will hold our different lower components
+		JPanel mainPanel = new JPanel();
+		JPanel panelMainText = new JPanel();
+		JPanel panelButtons = new JPanel();
+		
+		//Making our panel stack on top of each other if they're inside our main panel
+		mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.PAGE_AXIS));
+		
+
+				
 		//File chooser
 		JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -41,10 +47,12 @@ public class IndexationPage extends JFrame{
 		fileChooser.setDialogTitle("Please choose one or many files");
 		
 		//Document indexes display
-		documentIndexes = new JTextArea();
-		JScrollPane scrollPane = new JScrollPane(documentIndexes); 
+		documentIndexes = new JTextArea(20,80);
 		documentIndexes.setEditable(false);
-		content.add(scrollPane, BorderLayout.CENTER);
+		
+		//Putting it into a JScrollPane so that we can use the scrollbar features.
+		JScrollPane scrollPane = new JScrollPane(documentIndexes, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
+
 		
 		
 		//Button to open the file chooser
@@ -70,7 +78,8 @@ public class IndexationPage extends JFrame{
 			}
 			
 		});
-		content.add(fileButton, BorderLayout.NORTH);
+		
+		
 		
 		//Research page button
 		JButton pageButton = new JButton("Go to research page");
@@ -90,10 +99,22 @@ public class IndexationPage extends JFrame{
 //			}
 //			
 //		});
-		content.add(pageButton, BorderLayout.SOUTH);
+		
+		//Adding all our lower components into our "sous-panels" 
+		panelMainText.add(scrollPane);
+		panelButtons.add(fileButton);
+		panelButtons.add(pageButton);
+		
+		//Adding our "sous-panels" into the main one
+		mainPanel.add(panelMainText);
+		mainPanel.add(panelButtons);
 		
 		
-
-		this.setVisible(true);
+		//Frame parameters
+		mainFrame.add(mainPanel);
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame.pack();
+		mainFrame.setLocationRelativeTo(null);
+		mainFrame.setVisible(true);
 	}
 }
