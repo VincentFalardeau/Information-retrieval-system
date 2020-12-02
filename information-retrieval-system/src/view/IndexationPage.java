@@ -1,10 +1,12 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -30,8 +32,10 @@ public class IndexationPage extends JFrame{
 		//Creating our main frame
 		JFrame mainFrame = new JFrame("Indexation Page");
 		
-		//Creating the panels which will hold our different lower components
+		//Main panel that will hold all the "sous-panels" for design purposes
 		JPanel mainPanel = new JPanel();
+		
+		//Creating the panels which will hold our different lower components
 		JPanel panelMainText = new JPanel();
 		JPanel panelButtons = new JPanel();
 		
@@ -49,6 +53,8 @@ public class IndexationPage extends JFrame{
 		//Document indexes display
 		documentIndexes = new JTextArea(20,80);
 		documentIndexes.setEditable(false);
+		
+		//TO DO : Add label for the main text
 		
 		//Putting it into a JScrollPane so that we can use the scrollbar features.
 		JScrollPane scrollPane = new JScrollPane(documentIndexes, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
@@ -83,22 +89,26 @@ public class IndexationPage extends JFrame{
 		
 		//Research page button
 		JButton pageButton = new JButton("Go to research page");
-//		pageButton.addActionListener(new ActionListener() {
-//
-//			@Override
-//			public void actionPerformed(ActionEvent arg0) {
-//				
-//				if(documentIndexor != null) {
-//					WordIndexor wordIndexor = new WordIndexor(documentIndexor);
-//				}
-//				else {
-//					//TODO
-//				}
-//				
-//				
-//			}
-//			
-//		});
+		pageButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if(documentIndexor != null) {
+					new ResearchPage();
+				}
+				else {
+					//TODO
+				}
+				
+				
+			}
+			
+		});
+		
+		//Setting some borders around our main text area for design
+		documentIndexes.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+		
 		
 		//Adding all our lower components into our "sous-panels" 
 		panelMainText.add(scrollPane);
