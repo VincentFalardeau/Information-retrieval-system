@@ -98,7 +98,7 @@ public class IndexationPage extends JFrame{
 					new ResearchPage();
 				}
 				else {
-					//TODO
+					//TODO : Do we make an alert appear saying that they need to select file?
 				}
 				
 				

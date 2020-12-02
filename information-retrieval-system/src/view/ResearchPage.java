@@ -53,6 +53,7 @@ public class ResearchPage {
 		JButton buttonResearch = new JButton("Launch search");
 		buttonResearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//TO DO : LINK TO SEARCH FUNCTION
 				System.out.println("test");
 			}
 		});
