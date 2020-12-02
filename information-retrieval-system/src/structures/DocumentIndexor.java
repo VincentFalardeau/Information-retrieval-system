@@ -1,3 +1,5 @@
+//Noms : Karim Boumghar et Vincent Falardeau
+
 package structures;
 
 import java.io.File;

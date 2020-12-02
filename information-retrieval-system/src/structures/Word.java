@@ -1,3 +1,5 @@
+//Noms : Karim Boumghar et Vincent Falardeau
+
 package structures;
 
 public class Word implements Comparable{

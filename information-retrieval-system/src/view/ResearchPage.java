@@ -1,3 +1,5 @@
+//Noms : Karim Boumghar et Vincent Falardeau
+
 package view;
 
 import javax.swing.BoxLayout;
