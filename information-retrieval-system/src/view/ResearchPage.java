@@ -2,7 +2,8 @@
 
 package view;
 
-import javax.swing.BoxLayout;
+import structures.WordIndexor;
+import tools.Tokenizer;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,7 +14,11 @@ import javax.swing.*;
 
 public class ResearchPage {
 	
-	public ResearchPage() {
+	private WordIndexor wordIndexor;
+	private JTextArea researchQuery;
+	
+	public ResearchPage(WordIndexor wordIndexor) {
+		this.wordIndexor = wordIndexor;
 		
 		//Creating our main frame
 		JFrame mainFrame = new JFrame("Research Page");
@@ -41,6 +46,7 @@ public class ResearchPage {
 		//Creating our Text area that will display the answer to the user's search request
 		JTextArea researchResult = new JTextArea(10,40);
 		researchResult.setEditable(false);
+		JScrollPane scrollPane = new JScrollPane(researchResult, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
 		
 		//Creating label that indicates user where to make the research
 		JLabel researchQueryLabel = new JLabel();
@@ -49,14 +55,18 @@ public class ResearchPage {
 		
 		
 		//Creating our text area that our user can use to make his search query
-		JTextArea researchQuery = new JTextArea(1,40);
+		researchQuery = new JTextArea(1,40);
 		
 		//Button to launch the research qury
 		JButton buttonResearch = new JButton("Launch search");
 		buttonResearch.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				//TO DO : LINK TO SEARCH FUNCTION
-				System.out.println("test");
+				String[] research = Tokenizer.tokenize(researchQuery.getText());
+				String result = wordIndexor.search(research);
+				//System.out.println("test");
+				researchResult.setText(result);
 			}
 		});
 		
@@ -72,7 +82,7 @@ public class ResearchPage {
 		
 		//Adding all our lower components into our "sous-panels" 
 		panelResultLabel.add(researchResultLabel);
-		panelResult.add(researchResult);
+		panelResult.add(scrollPane);
 		panelResearchTextLabel.add(researchQueryLabel);
 		panelResearchText.add(researchQuery);
 		panelButton.add(buttonResearch);

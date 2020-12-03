@@ -97,7 +97,7 @@ public class IndexationPage extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(documentIndexor != null) {
-					new ResearchPage();
+					new ResearchPage(new WordIndexor(documentIndexor));
 				}
 				else {
 					//TODO : Do we make an alert appear saying that they need to select file?

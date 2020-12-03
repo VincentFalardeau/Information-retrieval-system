@@ -3,6 +3,7 @@
 package structures;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import tools.QuickSort;
 
@@ -13,6 +14,7 @@ public class WordIndexor {
 	public ArrayList<Comparable> wordIndexes;
 	public static int documentCount;
 	public DocumentIndexor documentIndexor;
+	private ArrayList<Document> searchResult;
 	
 	public WordIndexor(DocumentIndexor documentIndexor) {
 		this.documentIndexor = documentIndexor;
@@ -49,6 +51,42 @@ public class WordIndexor {
 		
 		sort();
 		
+		
+	}
+	
+	public String search(String[] words) {
+		
+		//Effectuer la recherche binaire
+		
+		
+		//TODO: Modifier pour faire comme le TP le dit, ceci est juste pour tester
+		//Supposons qu'on a comme resultat:
+		int resultIndex = 0;
+		WordIndex[] wordIndexOfResults = {(WordIndex) wordIndexes.get(resultIndex), (WordIndex) wordIndexes.get(1)};//Aller chercher les wordIndexes des resultats
+		ArrayList<Comparable> results = new ArrayList<Comparable>();
+		for(int i = 0; i < documentCount; i++) {
+			int frequence = wordIndexOfResults[0].getFrequence(i);//La frequence du premier mot dans le ieme document
+			
+			
+			if(frequence > 0) {//Si le mot est bel et bien dans le ieme document
+				Document doc = documentIndexor.getDocument(i);//Prendre le document et le mettre dans la liste des resultats
+				doc.setFrequence(frequence);
+				
+				//Verifier pour les autres mots de la recherche
+				Word autreMot = wordIndexOfResults[1].getWord();
+				DocumentIndex docIndex = documentIndexor.get(i);
+				if(docIndex.contains(autreMot.getName())) {
+					doc.incrementFrequence(autreMot.getFrequence());//Augmenter le score
+					results.add(doc);//Si oui, le document peut etre imprime en resultat
+				}
+				
+				
+			}
+			
+		}
+		QuickSort.sort(results);//Ordonner les documents selon leur score
+		
+		return Arrays.toString(results.toArray());//Retourner la version string de l'array
 		
 	}
 	
