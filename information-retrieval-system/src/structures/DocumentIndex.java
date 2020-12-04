@@ -18,9 +18,9 @@ public class DocumentIndex {
 	private ArrayList<Comparable> words;
 	private Document document;
 	
-	public DocumentIndex(File file) {
+	public DocumentIndex(File file, int id) {
 		words = new ArrayList<Comparable>();
-		setDocument(new Document(file));
+		setDocument(new Document(file, id));
 		tokenize(file);
 	}
 	

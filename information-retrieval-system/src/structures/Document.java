@@ -8,22 +8,25 @@ public class Document {
 	
 	private String name;
 	private int frequence;
-	
-	public Document(String name) {
-		setFrequence(0);
-		setName(name);
-	}
-	
-	public Document(String name, int frequence) {
-		setFrequence(frequence);
-		setName(name);
-	}
-	
-	public Document(File file) {
+	private int id;
+
+	//Id of the document represents it's position in the array.
+	public Document(File file, int id) {
 		setFrequence(0);
 		setName(file.getName());
+		this.id = id;
 	}
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "(" + getFrequence() + ") " + getName();

@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -24,7 +25,7 @@ import structures.DocumentIndex;
 import structures.DocumentIndexor;
 import structures.WordIndexor;
 
-public class IndexationPage extends JFrame{
+public class IndexationPage{
 	
 	DocumentIndexor documentIndexor;
 	JTextArea documentIndexes;
@@ -75,9 +76,9 @@ public class IndexationPage extends JFrame{
 				int result = fileChooser.showOpenDialog(null);
 				if(result == JFileChooser.APPROVE_OPTION) {
 					File[] files = fileChooser.getSelectedFiles();
-					
 					//Index the choosen files
 					documentIndexor = new DocumentIndexor(files);
+					
 					
 					documentIndexes.setText(documentIndexor.toString());
 				}
@@ -97,7 +98,14 @@ public class IndexationPage extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(documentIndexor != null) {
-					new ResearchPage();
+					WordIndexor wordIndexor = new WordIndexor(documentIndexor);
+					new ResearchPage(wordIndexor);
+					
+					ArrayList<Comparable> test = wordIndexor.getWordIndexes();
+					for(int i = 0; i < test.size(); i++) {
+						System.out.println(wordIndexor.get);
+					}
+					
 				}
 				else {
 					//TODO : Do we make an alert appear saying that they need to select file?
@@ -129,4 +137,6 @@ public class IndexationPage extends JFrame{
 		mainFrame.setLocationRelativeTo(null);
 		mainFrame.setVisible(true);
 	}
+	
+
 }

@@ -56,6 +56,16 @@ public class WordIndexor {
 		QuickSort.sort(wordIndexes);
 		
 	}
+	
+	
+
+	public ArrayList<Comparable> getWordIndexes() {
+		return wordIndexes;
+	}
+
+	public void setWordIndexes(ArrayList<Comparable> wordIndexes) {
+		this.wordIndexes = wordIndexes;
+	}
 
 	@Override
 	public String toString() {
@@ -68,7 +78,7 @@ public class WordIndexor {
 	}
 	
 	//Gives a String representation of the ith WordIndex
-	private String toString(int i) {
+	public String toString(int i) {
 		WordIndex wordIndex = (WordIndex) wordIndexes.get(i);
 		Word word = wordIndex.getWord();
 		String str = word.getName() + ": \n\t";

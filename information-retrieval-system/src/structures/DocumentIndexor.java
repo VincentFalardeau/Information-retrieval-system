@@ -21,7 +21,7 @@ public class DocumentIndexor{
 	public void index(File[] files) {
 		
 		for(int i = 0; i < files.length; i++) {
-			documentIndexes[i] = new DocumentIndex(files[i]);
+			documentIndexes[i] = new DocumentIndex(files[i], i);
 		}
 	}
 	
@@ -46,6 +46,8 @@ public class DocumentIndexor{
 	
 	
 	@Override
+	
+	
 	public String toString() {
 		String str = "";
 		for(DocumentIndex di: documentIndexes) {

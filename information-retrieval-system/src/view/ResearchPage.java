@@ -8,12 +8,23 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
+import structures.*;
+import tools.Tokenizer;
 
 public class ResearchPage {
 	
-	public ResearchPage() {
+	WordIndexor wordIndexorList;
+	
+	public ResearchPage(WordIndexor wordIndexorList) {
+		
+		new ResearchPageController(wordIndexorList);
+		
+
+		
+		
 		
 		//Creating our main frame
 		JFrame mainFrame = new JFrame("Research Page");
@@ -55,8 +66,15 @@ public class ResearchPage {
 		JButton buttonResearch = new JButton("Launch search");
 		buttonResearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TO DO : LINK TO SEARCH FUNCTION
-				System.out.println("test");
+				
+				if (!researchQuery.getText().isEmpty()) {
+					
+				}
+				
+				else {
+					//TO DO : Alert to put some search token
+				}
+				
 			}
 		});
 		

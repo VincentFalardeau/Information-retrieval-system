@@ -29,4 +29,14 @@ public class Tokenizer {
 			
 		}		
 	}
+	
+	public static String[] tokenize(String str) {
+		//Detect words in the string (doesn't work for special characters)
+		//TODO: Refine word detection
+		str = str.replaceAll("[^a-zA-z0-9]", " ");//[^a-zA-z0-9] Keep a-z, A-Z, 0-9
+		String[] wordsFound = str.split(" +");//" +" means a space and a character
+		
+		return wordsFound;
+
+	}
 }
