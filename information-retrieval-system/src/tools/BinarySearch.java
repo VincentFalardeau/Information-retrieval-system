@@ -3,15 +3,16 @@ package tools;
 import java.util.ArrayList;
 import structures.*;
 
+//Tool class that is used to define static methods for ArrayList of comparable for binary search of strings.
 public class BinarySearch {
 	
-	//Method that search for x word in arraylist from index start to index end and returns position in array
-	//or -1 if it's not there. This search ignores capitalization and uses binary search
+	//Method that search for x word in arrayList from index start to index end and returns position in arrayList
+	//or -1 if it's not there. This search ignores capitalization and uses binary search for logN
 	public static int search(String x, ArrayList<Comparable> arr, int start, int end) {
 		
 		x = x.toLowerCase();
 		
-		//Initialize the middle of our array
+		//Initialize the middle of our arrayList
 		int middle = (start + end) / 2;
 		
 		if (start > end) {
@@ -23,12 +24,12 @@ public class BinarySearch {
 			return middle;
 		}
 		
-		//If the string in the array is greater than the one we're searching for
+		//If the string in the arrayList is greater than the one we're searching for
 		else if (((WordIndex)arr.get(middle)).compareTo(x) > 0) {
 			return search(x, arr, start, middle-1);
 		}
 		
-		//If the string in the array is lesser than the one we're searching for
+		//If the string in the arrayList is lesser than the one we're searching for
 		else {
 			return search(x, arr, middle+1, end);
 			

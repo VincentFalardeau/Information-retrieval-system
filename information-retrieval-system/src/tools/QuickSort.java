@@ -5,6 +5,7 @@ package tools;
 import java.util.ArrayList;
 
 
+//Class that is used to implement static quicksort on arrayList of comparable.
 public class QuickSort {
 	
 	public static void sort(ArrayList<Comparable> list) {

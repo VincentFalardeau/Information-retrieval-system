@@ -19,6 +19,15 @@ public class Document implements Comparable{
 	
 	
 	
+	public Document(Document document) {
+		// TODO Auto-generated constructor stub
+		this.name = document.name;
+		this.frequence = document.frequence;
+		this.id = document.id;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}

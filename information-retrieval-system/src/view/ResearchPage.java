@@ -12,6 +12,8 @@ import javax.swing.*;
 import structures.*;
 import tools.Tokenizer;
 
+
+//This class is used to display our research page GUI
 public class ResearchPage {
 	
 	WordIndexor wordIndexorList;
@@ -19,9 +21,6 @@ public class ResearchPage {
 	public ResearchPage(WordIndexor wordIndexorList) {
 		
 		ResearchPageController RPC = new ResearchPageController(wordIndexorList);
-		
-
-		
 		
 		
 		//Creating our main frame
@@ -48,19 +47,22 @@ public class ResearchPage {
 		researchResultLabel.setText("Search results");
 		
 		//Creating our Text area that will display the answer to the user's search request
-		JTextArea researchResult = new JTextArea(10,40);
+		JTextArea researchResult = new JTextArea(20,40);
 		researchResult.setEditable(false);
+		
+		//Putting it in a scrollPane so we can use scroll bar
+		JScrollPane scrollPane = new JScrollPane(researchResult, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
 		
 		//Creating label that indicates user where to make the research
 		JLabel researchQueryLabel = new JLabel();
 		researchQueryLabel.setFont(new Font("Serif", Font.BOLD, 14));
-		researchQueryLabel.setText("Search for words"); //TO DO : CHANGE TEXT HERE
+		researchQueryLabel.setText("Search query"); 
 		
 		
 		//Creating our text area that our user can use to make his search query
 		JTextArea researchQuery = new JTextArea(1,40);
 		
-		//Button to launch the research qury
+		//Button to launch the research query
 		JButton buttonResearch = new JButton("Launch search");
 		buttonResearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -68,7 +70,8 @@ public class ResearchPage {
 				String query = researchQuery.getText();
 				
 				if (!researchQuery.getText().isEmpty()) {
-					RPC.scoreResearch(researchQuery.getText());
+					String results = RPC.scoreResearch(researchQuery.getText());
+					researchResult.setText(results);
 				}
 				
 				else {
@@ -92,7 +95,7 @@ public class ResearchPage {
 		
 		//Adding all our lower components into our "sous-panels" 
 		panelResultLabel.add(researchResultLabel);
-		panelResult.add(researchResult);
+		panelResult.add(scrollPane);
 		panelResearchTextLabel.add(researchQueryLabel);
 		panelResearchText.add(researchQuery);
 		panelButton.add(buttonResearch);

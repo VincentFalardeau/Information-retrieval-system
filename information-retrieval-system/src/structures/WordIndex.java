@@ -15,17 +15,16 @@ public class WordIndex implements Comparable{
 	//Gives the frequence of the word in the ith document
 	public int getFrequence(int i) {
 		
-		
 		return documents[i];
 	}
 	
-	//Increments the frequence of the word in the ith document
-	public void incrementFrequence(int i) {
-		
-		//TODO  special cases
-		assert documents.length > i;
-				
-		documents[i]++;
+	//Increments the frequence for 1
+	public void incrementFrequence(int i) {				
+		documents[i]++;		
+	}
+	//Increments the frequence of the word in the ith document by amount
+	public void incrementFrequence(int i, int amount) {				
+		documents[i] += amount;		
 	}
 	
 	public Word getWord() {

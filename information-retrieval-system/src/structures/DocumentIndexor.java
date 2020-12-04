@@ -46,8 +46,6 @@ public class DocumentIndexor{
 	
 	
 	@Override
-	
-	
 	public String toString() {
 		String str = "";
 		for(DocumentIndex di: documentIndexes) {

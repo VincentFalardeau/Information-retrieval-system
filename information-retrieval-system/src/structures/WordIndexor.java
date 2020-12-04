@@ -37,13 +37,14 @@ public class WordIndexor {
 				//First time this word is found, make new wordIndex
 				if(k < 0) {
 					WordIndex wordIndex = new WordIndex(word);
-					wordIndex.incrementFrequence(i);//Found in the ith document
+					
+					wordIndex.incrementFrequence(i, word.getFrequence());//Found in the ith document
+
 					wordIndexes.add(wordIndex);
 				}
 				//Not the first time the word is found
 				else {
-					((WordIndex) wordIndexes.get(k)).incrementFrequence(i);//Seen in the ith document once more
-					System.out.println("Incrémentation de la fréquence : " + ((WordIndex) wordIndexes.get(k)).getFrequence(i));
+					((WordIndex) wordIndexes.get(k)).incrementFrequence(i, word.getFrequence());//Seen in the ith document once more
 				}
 				
 			}

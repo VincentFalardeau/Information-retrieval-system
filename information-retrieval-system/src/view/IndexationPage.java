@@ -2,30 +2,16 @@
 
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.ArrayList;
-
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
+import structures.*;
 
-import structures.DocumentIndex;
-import structures.DocumentIndexor;
-import structures.WordIndexor;
 
+//This class is used to display GUI that lets user select files to index and a button to open research interface
 public class IndexationPage{
 	
 	DocumentIndexor documentIndexor;
@@ -76,7 +62,7 @@ public class IndexationPage{
 				int result = fileChooser.showOpenDialog(null);
 				if(result == JFileChooser.APPROVE_OPTION) {
 					File[] files = fileChooser.getSelectedFiles();
-					//Index the choosen files
+					//Index the chosen files
 					documentIndexor = new DocumentIndexor(files);
 					
 					
@@ -98,18 +84,13 @@ public class IndexationPage{
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(documentIndexor != null) {
-					
-					WordIndexor wordIndexor = new WordIndexor(documentIndexor);
-					
-					System.out.println("word indexor dans indexation page" + wordIndexor);
-					
-					//new ResearchPage(wordIndexor);
-					
-					
-					
+			
+					WordIndexor wordIndexor = new WordIndexor(documentIndexor);			
+					new ResearchPage(wordIndexor);
+		
 				}
 				else {
-					//Displaying an alert message if we didn't select a single file. Taken from stackoverflow.
+					//Displaying an alert message if we didn't select a single file. Taken from stack overflow.
 					//https://stackoverflow.com/questions/9119481/how-to-present-a-simple-alert-message-in-java
 					JOptionPane.showMessageDialog(mainFrame, "Files need to be selected to access the research page");
 				}
