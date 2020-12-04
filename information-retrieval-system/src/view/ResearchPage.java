@@ -2,8 +2,6 @@
 
 package view;
 
-import javax.swing.BoxLayout;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -72,7 +70,9 @@ public class ResearchPage {
 				}
 				
 				else {
-					//TO DO : Alert to put some search token
+					//Alerting the user that something must be inputed before they can use the search button.
+					//https://stackoverflow.com/questions/9119481/how-to-present-a-simple-alert-message-in-java
+					JOptionPane.showMessageDialog(mainFrame, "Search query cannot be empty");
 				}
 				
 			}

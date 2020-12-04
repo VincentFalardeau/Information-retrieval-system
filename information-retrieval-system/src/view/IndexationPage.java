@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -57,9 +58,8 @@ public class IndexationPage{
 		documentIndexes = new JTextArea(20,80);
 		documentIndexes.setEditable(false);
 		
-		//TO DO : Add label for the main text
 		
-		//Putting it into a JScrollPane so that we can use the scrollbar features.
+		//Putting it into a JScrollPane so that we can use the scroll bar features.
 		JScrollPane scrollPane = new JScrollPane(documentIndexes, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
 
 		
@@ -103,12 +103,14 @@ public class IndexationPage{
 					
 					ArrayList<Comparable> test = wordIndexor.getWordIndexes();
 					for(int i = 0; i < test.size(); i++) {
-						System.out.println(wordIndexor.get);
+						//System.out.println(wordIndexor.get);
 					}
 					
 				}
 				else {
-					//TODO : Do we make an alert appear saying that they need to select file?
+					//Displaying an alert message if we didn't select a single file. Taken from stackoverflow.
+					//https://stackoverflow.com/questions/9119481/how-to-present-a-simple-alert-message-in-java
+					JOptionPane.showMessageDialog(mainFrame, "Files need to be selected to access the research page");
 				}
 				
 				
