@@ -69,7 +69,6 @@ public class Document implements Comparable{
 
 	@Override
 	public int compareTo(Object o) {
-		
 		//allows to sort in a decreasing way according to the score
 		return ((Document)o).getFrequence() - frequence;
 	}

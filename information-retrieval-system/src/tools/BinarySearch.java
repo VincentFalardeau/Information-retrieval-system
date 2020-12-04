@@ -31,12 +31,8 @@ public class BinarySearch {
 		
 		//If the string in the arrayList is lesser than the one we're searching for
 		else {
-			return search(x, arr, middle+1, end);
-			
-		}
-		
-		
-		
+			return search(x, arr, middle+1, end);		
+		}	
 	}
 	
 	//Binarysearch overload (to search through whole arraylist)

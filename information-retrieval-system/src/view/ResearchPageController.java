@@ -87,6 +87,7 @@ public class ResearchPageController{
 					else {
 
 						answerList.remove(j);
+						//Since we're removing a document, we want to make sure to not miss anything and need to decrement our j
 						j--;
 					}
 					
