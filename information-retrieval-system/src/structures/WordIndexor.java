@@ -43,7 +43,9 @@ public class WordIndexor {
 				//Not the first time the word is found
 				else {
 					((WordIndex) wordIndexes.get(k)).incrementFrequence(i);//Seen in the ith document once more
+					System.out.println("Incrémentation de la fréquence : " + ((WordIndex) wordIndexes.get(k)).getFrequence(i));
 				}
+				
 			}
 		}
 		
@@ -52,6 +54,16 @@ public class WordIndexor {
 		
 	}
 	
+	
+	
+	public static int getDocumentCount() {
+		return documentCount;
+	}
+
+	public DocumentIndexor getDocumentIndexor() {
+		return documentIndexor;
+	}
+
 	public void sort() {
 		QuickSort.sort(wordIndexes);
 		

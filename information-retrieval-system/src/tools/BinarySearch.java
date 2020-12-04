@@ -1,10 +1,13 @@
 package tools;
 
+import java.util.ArrayList;
+import structures.*;
+
 public class BinarySearch {
 	
-	//Method that search for x word in array from index start to index end and returns position in array
+	//Method that search for x word in arraylist from index start to index end and returns position in array
 	//or -1 if it's not there. This search ignores capitalization and uses binary search
-	public int search(String x, String[] arr, int start, int end) {
+	public static int search(String x, ArrayList<Comparable> arr, int start, int end) {
 		
 		x = x.toLowerCase();
 		
@@ -16,12 +19,12 @@ public class BinarySearch {
 		}
 		
 		//If both Strings are equal
-		if ((arr[middle].toLowerCase()).compareTo(x) == 0) {
+		if (((WordIndex)arr.get(middle)).compareTo(x) == 0) {
 			return middle;
 		}
 		
 		//If the string in the array is greater than the one we're searching for
-		else if ((arr[middle].toLowerCase()).compareTo(x) == 1) {
+		else if (((WordIndex)arr.get(middle)).compareTo(x) > 0) {
 			return search(x, arr, start, middle-1);
 		}
 		
@@ -35,10 +38,10 @@ public class BinarySearch {
 		
 	}
 	
-	//Binarysearch overload (to search through whole array)
-	public int search(String x, String[] arr) {
+	//Binarysearch overload (to search through whole arraylist)
+	public static int search(String x, ArrayList<Comparable> arr) {
 		
-		return search(x, arr, 0, arr.length-1);
+		return search(x, arr, 0, arr.size()-1);
 		
 	}
 

@@ -98,13 +98,14 @@ public class IndexationPage{
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(documentIndexor != null) {
-					WordIndexor wordIndexor = new WordIndexor(documentIndexor);
-					new ResearchPage(wordIndexor);
 					
-					ArrayList<Comparable> test = wordIndexor.getWordIndexes();
-					for(int i = 0; i < test.size(); i++) {
-						//System.out.println(wordIndexor.get);
-					}
+					WordIndexor wordIndexor = new WordIndexor(documentIndexor);
+					
+					System.out.println("word indexor dans indexation page" + wordIndexor);
+					
+					//new ResearchPage(wordIndexor);
+					
+					
 					
 				}
 				else {

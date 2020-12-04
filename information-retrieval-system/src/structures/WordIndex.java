@@ -15,8 +15,6 @@ public class WordIndex implements Comparable{
 	//Gives the frequence of the word in the ith document
 	public int getFrequence(int i) {
 		
-		//TODO  special cases
-		assert documents.length > i;
 		
 		return documents[i];
 	}
@@ -43,5 +41,10 @@ public class WordIndex implements Comparable{
 	@Override
 	public int compareTo(Object o) {
 		return getWord().compareTo(((WordIndex)o).getWord());
+	}
+	
+	//Overload of compareTo method when we want to compare to a string.
+	public int compareTo(String str) {
+		return getWord().getName().compareToIgnoreCase(str);
 	}
 }

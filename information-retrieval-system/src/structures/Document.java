@@ -4,7 +4,7 @@ package structures;
 
 import java.io.File;
 
-public class Document {
+public class Document implements Comparable{
 	
 	private String name;
 	private int frequence;
@@ -27,11 +27,6 @@ public class Document {
 		this.id = id;
 	}
 
-	@Override
-	public String toString() {
-		return "(" + getFrequence() + ") " + getName();
-	}
-
 	public void incrementFrequence(){
 		setFrequence(getFrequence() + 1);
 	}
@@ -52,4 +47,24 @@ public class Document {
 		this.frequence = frequence;
 	}
 
+
+	public void incrementFrequence(int amount) {
+		this.frequence = frequence + amount;
+	}
+	
+	@Override
+	public String toString() {
+		return "(" + getFrequence() + ") " + getName();
+	}
+
+
+	@Override
+	public int compareTo(Object o) {
+		
+		//allows to sort in a decreasing way according to the score
+		return ((Document)o).getFrequence() - frequence;
+	}
+	
+	
+	
 }

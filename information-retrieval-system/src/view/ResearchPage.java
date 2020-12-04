@@ -18,7 +18,7 @@ public class ResearchPage {
 	
 	public ResearchPage(WordIndexor wordIndexorList) {
 		
-		new ResearchPageController(wordIndexorList);
+		ResearchPageController RPC = new ResearchPageController(wordIndexorList);
 		
 
 		
@@ -65,8 +65,10 @@ public class ResearchPage {
 		buttonResearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				String query = researchQuery.getText();
+				
 				if (!researchQuery.getText().isEmpty()) {
-					
+					RPC.scoreResearch(researchQuery.getText());
 				}
 				
 				else {
