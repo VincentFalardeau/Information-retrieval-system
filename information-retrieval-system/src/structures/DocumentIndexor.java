@@ -33,7 +33,6 @@ public class DocumentIndexor{
 		return documentIndexes;
 	}
 	
-	
 	//Gives the ith document index
 	public DocumentIndex get(int i) {
 		return documentIndexes[i];

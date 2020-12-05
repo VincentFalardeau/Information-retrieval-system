@@ -21,6 +21,7 @@ public class WordIndexor {
 		index();
 	}
 
+	//Procedure that indexes the documents (build the second structure from the first one)
 	private void index() {
 		
 		//For every document
@@ -37,14 +38,15 @@ public class WordIndexor {
 				//First time this word is found, make new wordIndex
 				if(k < 0) {
 					WordIndex wordIndex = new WordIndex(word);
-					
-					wordIndex.incrementFrequence(i, word.getFrequence());//Found in the ith document
+					//Found in the ith document
+					wordIndex.incrementFrequence(i, word.getFrequence());
 
 					wordIndexes.add(wordIndex);
 				}
 				//Not the first time the word is found
 				else {
-					((WordIndex) wordIndexes.get(k)).incrementFrequence(i, word.getFrequence());//Seen in the ith document once more
+					//Seen in the ith document once more
+					((WordIndex) wordIndexes.get(k)).incrementFrequence(i, word.getFrequence());
 				}
 				
 			}
@@ -54,8 +56,6 @@ public class WordIndexor {
 		
 		
 	}
-	
-	
 	
 	public static int getDocumentCount() {
 		return documentCount;
@@ -69,8 +69,6 @@ public class WordIndexor {
 		QuickSort.sort(wordIndexes);
 		
 	}
-	
-	
 
 	public ArrayList<Comparable> getWordIndexes() {
 		return wordIndexes;

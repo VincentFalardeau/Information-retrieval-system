@@ -5,6 +5,7 @@ package structures;
 public class Word implements Comparable{
 	
 	private String name;
+	//Number of times the word appears
 	private int frequence;
 	
 	public Word(String name) {

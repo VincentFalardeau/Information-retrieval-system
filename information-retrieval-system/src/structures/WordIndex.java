@@ -2,8 +2,7 @@ package structures;
 
 public class WordIndex implements Comparable{
 	
-	//The documents array, 0 at index i means no occurence of the current word in the ith document of documentIndexor
-	//1 means there is an occurence of the current word in the ith document of documentIndexor
+	//The ith index of the documents array represents the number of occurences of the word in the ith document
 	public int[] documents;
 	private Word word;
 	
@@ -14,7 +13,6 @@ public class WordIndex implements Comparable{
 	
 	//Gives the frequence of the word in the ith document
 	public int getFrequence(int i) {
-		
 		return documents[i];
 	}
 	
@@ -22,6 +20,7 @@ public class WordIndex implements Comparable{
 	public void incrementFrequence(int i) {				
 		documents[i]++;		
 	}
+	
 	//Increments the frequence of the word in the ith document by amount
 	public void incrementFrequence(int i, int amount) {				
 		documents[i] += amount;		

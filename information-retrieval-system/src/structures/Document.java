@@ -7,6 +7,7 @@ import java.io.File;
 public class Document implements Comparable{
 	
 	private String name;
+	//The frequence of the document, also the score when searching for words
 	private int frequence;
 	private int id;
 
@@ -17,16 +18,12 @@ public class Document implements Comparable{
 		this.id = id;
 	}
 	
-	
-	
+	//Copy constructor
 	public Document(Document document) {
-		// TODO Auto-generated constructor stub
 		this.name = document.name;
 		this.frequence = document.frequence;
 		this.id = document.id;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -66,10 +63,9 @@ public class Document implements Comparable{
 		return "(" + getFrequence() + ") " + getName();
 	}
 
-
 	@Override
 	public int compareTo(Object o) {
-		//allows to sort in a decreasing way according to the score
+		//Allows to sort in a decreasing way according to the score
 		return ((Document)o).getFrequence() - frequence;
 	}
 	
