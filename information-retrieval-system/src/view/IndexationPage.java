@@ -56,8 +56,6 @@ public class IndexationPage extends JFrame{
 		documentIndexes = new JTextArea(20,80);
 		documentIndexes.setEditable(false);
 		
-		//TO DO : Add label for the main text
-		
 		//Putting it into a JScrollPane so that we can use the scrollbar features.
 		JScrollPane scrollPane = new JScrollPane(documentIndexes, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
 
@@ -101,6 +99,7 @@ public class IndexationPage extends JFrame{
 				}
 				else {
 					//TODO : Do we make an alert appear saying that they need to select file?
+					
 				}
 				
 				

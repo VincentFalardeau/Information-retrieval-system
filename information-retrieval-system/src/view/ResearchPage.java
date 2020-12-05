@@ -52,7 +52,7 @@ public class ResearchPage {
 		JLabel researchQueryLabel = new JLabel();
 		researchQueryLabel.setFont(new Font("Serif", Font.BOLD, 14));
 		researchQueryLabel.setText("Search for words"); //TO DO : CHANGE TEXT HERE
-		
+	
 		
 		//Creating our text area that our user can use to make his search query
 		researchQuery = new JTextArea(1,40);
@@ -62,32 +62,25 @@ public class ResearchPage {
 		buttonResearch.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				//TO DO : LINK TO SEARCH FUNCTION
 				String[] research = Tokenizer.tokenize(researchQuery.getText());
 				String result = wordIndexor.search(research);
-				//System.out.println("test");
 				researchResult.setText(result);
 			}
 		});
 		
-		
 		//Adding borders to our different text areas
 		researchResult.setBorder(BorderFactory.createLineBorder(Color.black, 2));
 		researchQuery.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+
 		
-		
-		
-		
-		
-		
-		//Adding all our lower components into our "sous-panels" 
+		//Adding all our lower components into our sub panels 
 		panelResultLabel.add(researchResultLabel);
 		panelResult.add(scrollPane);
 		panelResearchTextLabel.add(researchQueryLabel);
 		panelResearchText.add(researchQuery);
 		panelButton.add(buttonResearch);
 		
-		//Adding our "sous-panels" into the main one
+		//Adding our sub panels into the main one
 		mainPanel.add(panelResultLabel);
 		mainPanel.add(panelResult);
 		mainPanel.add(panelResearchTextLabel);
@@ -101,8 +94,6 @@ public class ResearchPage {
 		mainFrame.pack();
 		mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //We just want to close that one frame when closing it
 		mainFrame.setLocationRelativeTo(null);
-		
-		
 	}
 
 }
