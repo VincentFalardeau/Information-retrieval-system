@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import tools.QuickSort;
 import tools.Tokenizer;
 
-
+//Document and its words, and their frequence in that document.
 public class DocumentIndex {
 	
 	//ArrayList of words found in a document

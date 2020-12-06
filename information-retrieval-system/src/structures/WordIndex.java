@@ -1,6 +1,6 @@
 package structures;
 
-//Class that holds our array of documents and link each word with that array of documents (since the number of documents is constant)
+//Class that holds our array of documents and link each word with that array of documents
 public class WordIndex implements Comparable{
 	
 	//The ith index of the documents array represents the number of occurences of the word in the ith document
@@ -9,7 +9,7 @@ public class WordIndex implements Comparable{
 	
 	public WordIndex(Word word) {
 		this.word = word;
-		this.documents = new int[WordIndexor.documentCount];
+		this.documents = new int[WordIndexor.documentCount];//since the number of documents is fixed
 	}
 	
 	//Gives the frequence of the word in the ith document
