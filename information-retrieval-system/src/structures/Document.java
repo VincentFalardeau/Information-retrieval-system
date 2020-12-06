@@ -4,6 +4,7 @@ package structures;
 
 import java.io.File;
 
+//Class that represents each document (who each have a name, a frequence and a unique ID)
 public class Document implements Comparable{
 	
 	private String name;

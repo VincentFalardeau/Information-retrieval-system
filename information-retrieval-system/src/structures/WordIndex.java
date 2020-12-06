@@ -1,5 +1,6 @@
 package structures;
 
+//Class that holds our array of documents and link each word with that array of documents (since the number of documents is constant)
 public class WordIndex implements Comparable{
 	
 	//The ith index of the documents array represents the number of occurences of the word in the ith document

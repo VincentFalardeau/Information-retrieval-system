@@ -2,6 +2,7 @@
 
 package structures;
 
+//Class that represents each "word"
 public class Word implements Comparable{
 	
 	private String name;
