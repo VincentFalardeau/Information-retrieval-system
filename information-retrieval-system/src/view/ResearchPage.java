@@ -93,14 +93,14 @@ public class ResearchPage {
 		
 		
 		
-		//Adding all our lower components into our "sous-panels" 
+		//Adding all our lower components into our sub-panels
 		panelResultLabel.add(researchResultLabel);
 		panelResult.add(scrollPane);
 		panelResearchTextLabel.add(researchQueryLabel);
 		panelResearchText.add(researchQuery);
 		panelButton.add(buttonResearch);
 		
-		//Adding our "sous-panels" into the main one
+		//Adding our sub-panels into the main one
 		mainPanel.add(panelResultLabel);
 		mainPanel.add(panelResult);
 		mainPanel.add(panelResearchTextLabel);

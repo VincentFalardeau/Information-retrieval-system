@@ -104,12 +104,12 @@ public class IndexationPage{
 		documentIndexes.setBorder(BorderFactory.createLineBorder(Color.black, 2));
 		
 		
-		//Adding all our lower components into our "sous-panels" 
+		//Adding all our lower components into our sub-panels 
 		panelMainText.add(scrollPane);
 		panelButtons.add(fileButton);
 		panelButtons.add(pageButton);
 		
-		//Adding our "sous-panels" into the main one
+		//Adding our sub-panels into the main one
 		mainPanel.add(panelMainText);
 		mainPanel.add(panelButtons);
 		

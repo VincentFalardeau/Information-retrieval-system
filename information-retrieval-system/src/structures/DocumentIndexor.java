@@ -6,7 +6,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 //Structure #1
-
 public class DocumentIndexor{
 	
 	//Contains an array of DocumentIndex built from an array of files
