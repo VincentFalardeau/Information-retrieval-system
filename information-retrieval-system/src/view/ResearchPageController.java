@@ -6,6 +6,7 @@ import tools.Tokenizer;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+//Class that holds scoreResearch method that can be called by our GUI to return list of documents and their score after a search query
 public class ResearchPageController{
 	
 	WordIndexor wordIndexorList;
@@ -13,7 +14,9 @@ public class ResearchPageController{
 	public ResearchPageController(WordIndexor wordIndexorList) {
 		this.wordIndexorList = wordIndexorList;
 	}
-
+	
+	//Method that takes a String (our search query) and returns a String with the score of each documents (in descending order) for that
+	//search query
 	public String scoreResearch(String searchQuery) {
 		
 		//Transforming our search query into an array of words using our tokenizer

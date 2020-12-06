@@ -26,7 +26,7 @@ public class ResearchPage {
 		//Creating our main frame
 		JFrame mainFrame = new JFrame("Research Page");
 		
-		//Main panel that will hold all the "sous-panels" for design purposes
+		//Main panel that will hold all the sub-panels for design purposes
 		JPanel mainPanel = new JPanel();
 		
 		

@@ -22,7 +22,7 @@ public class IndexationPage{
 		//Creating our main frame
 		JFrame mainFrame = new JFrame("Indexation Page");
 		
-		//Main panel that will hold all the "sous-panels" for design purposes
+		//Main panel that will hold all the sub-panels for design purposes
 		JPanel mainPanel = new JPanel();
 		
 		//Creating the panels which will hold our different lower components
