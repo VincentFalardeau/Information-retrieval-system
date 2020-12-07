@@ -1,3 +1,28 @@
-Notez que les classes Word et Document implantent Comparable dans le but de pouvoir trier, dans notre classe Quicksort, avec la même méthode qui prend un ArrayList<Comparable>.
+Auteurs : Karim Boumghar et Vincent Falardeau
+IFT-1025 (TP2) - 7 décembre 2020
 
-Ainsi, dans DocumentIndex et WordIndexor, il y a des attributs du type ArrayList<Comparable>, dont les éléments réfèrent vers des objets Word et Document respectivement.
+Read me :
+
+Ce projet s'agit d'un système de recherche d'information simplifié. Comme l'énoncé le demande, il contient deux structures d'index (la première qui s'agit d'une structure d'index de documents, où pour chaque documents
+on lie tous les mots qui sont dans le documents après les avoir "parsé", et la deuxième structure qui prend chacun des mots et qui leur lie les documents et la fréquence à laquelle chacun des mots se trouvent dans ce document).
+La structure d'index de documents se trouve dans la classe DocumentIndexor et la structure d'index inversé se trouve dans a classe WordIndexor. Deux petites choses sont cependant à noter ; puisque qu'après que l'usager choisisse
+les documents, ceux-ci restent en nombre constants jusqu'à la fin du programme ou jusqu'à ce que l'usager change complètement les documents, on a cru qu'il serait plus judicieux que notre liste de document soit représenté sous
+forme d'array. En effet, puisqu'il n'y a pas d'opérations d'additions / ou soustractions, une array permet des opérations beaucoup plus rapides. À chacun des "cases" de notre tableau, se trouvent une arrayList de mots, qui eux
+varient. Il est aussi à noter que chaque document est représenté par un champs "ID", qui représente sa position dans le tableau, et d'accéder directement à un document choisi lors du calcul de score. Il est aussi à noter que
+les classes Word et Document implantent Comparable dans le but de pouvoir trier, dans notre classe Quicksort, avec la même méthode qui prend un ArrayList<Comparable> et donc que dans DocumentIndex et WordIndexor, il y a des attributs
+du type ArrayList<Comparable>, dont les éléments réfèrent vers des objets Word et Document respectivement.
+
+En ce qui concerne l'affichage graphique, nous avons une première fenêtre qui permet à l'usager de choisir les documents qu'il veut utiliser (pour faire ses recherches), d'un espace ou la première structure (Structure d'index
+de documents) est affiché après qu'ils choisissent les documents, et enfin, d'un bouton qui lui permet de passer à l'interface de recherche si il a choisi au moins un document, sinon un message d'alerte apparait. La deuxième
+interface graphique permet d'entrer des mots de recherches (search query) et de lancer la recherche pour voir les documents + les scores qui correspondent à la recherche. Si rien n'est entré dans la barre de recherche et que 
+l'utilisateur essaye de lancer une recherche, un message d'alerte apparait.
+
+Enfin, pour la fonction de recherche, une recherche binaire est utilisé pour trouver les mots dans notre liste de mots et la liste des documents en est ainsi facilement sorties. Après le premier mot, au lieu de sortir tous les
+documents qui correspondent au second mots et de fusionner ces deux tableaux, nous utilisons plutôt les ids qui sont présents dans notre premier tableau, arrayList, (correspondant à ceux qui sont associés au premier mot) pour vérifier directement
+la fréquence qu'ils ont pour le deuxieme (et plus) mot. Si la fréquence est 0, on enlève ce document de notre arrayList, sinon on ajoute la fréquence à celle qu'on avait auparavant pour obtenir notre score. Cela nous évite de
+devoir fusionner des tableaux à chaque étape et d'ainsi sauver un bon nombre d'opérations (en ne faisant que celles qui sont requises). Notre arrayList est vérifié à chaque itération pour s'assurer qu'elle ne soit pas vide (dans
+un tel cas, on renvoie tout de suite un string vide). À la fin de toute notre recherche, on "sort" notre arrayList par leur fréquence à l'aide d'un quicksort, et on converti tout cela en String qui est enfin affiché à l'utilisateur.
+
+
+
+
